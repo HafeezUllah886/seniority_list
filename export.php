@@ -30,9 +30,9 @@ include('connect.php');
                       $dob = $row['birth'];
                       $doa = $row['doa'];
                       $dor = $row['dor'];
-                      $dob1 = date("d-m-Y", strtotime($dob));
-                      $doa1 = date("d-m-Y", strtotime($doa));
-                      $dor1 = date("d-m-Y", strtotime($dor));
+                      $dob1 = date("d-M-y", strtotime($dob));
+                      $doa1 = date("d-M-y", strtotime($doa));
+                      $dor1 = date("d-M-y", strtotime($dor));
 
                       $diff = abs(strtotime($row['dor']) - strtotime($row['doa']));
                       $years = floor($diff / (365*60*60*24));

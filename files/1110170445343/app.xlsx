@@ -1,0 +1,7 @@
+<br />
+<b>Warning</b>:  Undefined variable $writer in <b>C:\xampp\htdocs\seniority_list\export.php</b> on line <b>61</b><br />
+<br />
+<b>Fatal error</b>:  Uncaught Error: Call to a member function save() on null in C:\xampp\htdocs\seniority_list\export.php:61
+Stack trace:
+#0 {main}
+  thrown in <b>C:\xampp\htdocs\seniority_list\export.php</b> on line <b>61</b><br />

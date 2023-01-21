@@ -13,30 +13,10 @@
     <title>List</title>
   </head>
   <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Seniority List</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">View</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="add.php">Add New</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="export.php">Export Data</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  <?php include('nav.html');?>
     <div class="row" style="padding:10px">
         <div class="col-sm-12">
-          <div style="overflow:auto;">
+          <div style="overflow:auto;width:120%;">
             <table id="table">
                 <thead>
                     <th>Ser</th>
@@ -54,6 +34,7 @@
                     <th>R/S</th>
                     <th>Remarks</th>
                     <th>Files</th>
+                    <th>Action</th>
                 </thead>
                 <tbody>
                   <?php
@@ -65,9 +46,9 @@
                       $dob = $row['birth'];
                       $doa = $row['doa'];
                       $dor = $row['dor'];
-                      $dob1 = date("d-m-Y", strtotime($dob));
-                      $doa1 = date("d-m-Y", strtotime($doa));
-                      $dor1 = date("d-m-Y", strtotime($dor));
+                      $dob1 = date("d-M-y", strtotime($dob));
+                      $doa1 = date("d-M-y", strtotime($doa));
+                      $dor1 = date("d-M-y", strtotime($dor));
 
                       $diff = abs(strtotime($row['dor']) - strtotime($row['doa']));
                       $years = floor($diff / (365*60*60*24));
@@ -91,10 +72,67 @@ $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24))
                         <td><?php echo $years .'Y '. $months . 'M '. $days . 'D' ?></td>
                         <td><?php echo $row['rem']; ?></td>
                         <td>
-                          <a href="<?php echo $row['app'];?>">1st App</a>,
-                          <a href="<?php echo $row['degree'];?>">Degree</a>,
-                          <a href="<?php echo $row['acr'];?>">ACR</a>,
-                          <a href="<?php echo $row['asset'];?>">Asset</a>
+                          <?php
+                            if($row['app'] == 1)
+                            {
+                              ?>
+                              <span class="text-danger">1st App</span>,
+                              <?php
+                            }
+                            else
+                            {
+                              ?>
+                              <a href="<?php echo $row['app'];?>">1st App</a>,
+                              <?php
+                            }
+                          ?>
+                          <?php
+                            if($row['degree'] == 1)
+                            {
+                              ?>
+                              <span class="text-danger">Degree</span>,
+                              <?php
+                            }
+                            else
+                            {
+                              ?>
+                              <a href="<?php echo $row['degree'];?>">Degree</a>,
+                              <?php
+                            }
+                          ?>
+                          <?php
+                            if($row['acr'] == 1)
+                            {
+                              ?>
+                              <span class="text-danger">ACR</span>,
+                              <?php
+                            }
+                            else
+                            {
+                              ?>
+                              <a href="<?php echo $row['acr'];?>">ACR</a>,
+                              <?php
+                            }
+                          ?>
+                          <?php
+                            if($row['asset'] == 1)
+                            {
+                              ?>
+                              <span class="text-danger">Asset</span>,
+                              <?php
+                            }
+                            else
+                            {
+                              ?>
+                              <a href="<?php echo $row['asset'];?>">Asset</a>,
+                              <?php
+                            }
+                          ?>
+                          
+                        </td>
+                        <td>
+                          <a href="update_files.php?id=<?php echo $row['id'];?>">Update Attachment</a>
+                          <a href="delete.php?id=<?php echo $row['id'];?>" class="text-danger">Delete</a>
                         </td>
                       </tr>
                       <?php

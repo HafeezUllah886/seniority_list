@@ -11,29 +11,7 @@
     <title>Add Employee</title>
   </head>
   <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Seniority List</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">View</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Add New</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="export.php">Export Data</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
+  <?php include('nav.html');?>
     <div class="row" style="padding:10px">
     <h3 class="text-center">New Entry</h3>
     <p id="msg" class="text-danger"></p>
@@ -62,7 +40,7 @@
             <div class="col-md-6">
                 <div class="mb-3">
                     <label for="dob" class="form-label">Date of Bith</label>
-                    <input type="date" id="dob" name="dob" class="form-control">
+                    <input type="date" id="dob" onfocusout="abc()" name="dob" class="form-control">
                 </div>
             </div>
         </div>
@@ -164,6 +142,7 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="assets/bootstrap/bootstrap.min.js"></script>
     <script src="assets/datatable/jquery.js"></script>
+    <script src="assets/moment.min.js"></script>
     
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
@@ -196,6 +175,13 @@ $("#form").submit(function(e) {
         processData: false
     });
 });
+
+function abc(){
+    var dob = $("#dob").val();
+    var newDate = moment(dob, "YYYY-MM-DD").add(60, 'years').format('DD-MM-YYYY');
+    var newDate1 = moment(newDate, "DD-MM-YYYY").subtract(6, 'days').format('YYYY-MM-DD');
+    $("#dor").val(newDate1);
+}
     </script>
   </body>
 </html>
