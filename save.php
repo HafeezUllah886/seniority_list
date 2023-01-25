@@ -12,6 +12,7 @@ $pq = $_POST['pq'];
 $doa = $_POST['doa'];
 $dor = $_POST['dor'];
 $rem = $_POST['rem'];
+$filen = $_POST['filen'];
 
 if(!$cnic){
     echo "CNIC Required";
@@ -66,8 +67,8 @@ else{
 }
 if($file1 == 1 && $file2 == 1 && $file3 == 1 && $file4 == 1){
 $q = "insert into list values
-(null, '$name', '$fname', '$cnic', '$dob', '$pno', 
-'$desg', '$dist', '$aq', '$pq', '$doa', '$dor', '$rem', '$file1n', '$file2n', '$file3n', '$file4n')";
+(null,'$name', '$fname', '$cnic', '$dob', '$pno', 
+'$desg', '$dist', '$aq', '$pq', '$doa', '$dor', '$rem', '$file1n', '$file2n', '$file3n', '$file4n','$filen')";
 
 $save = mysqli_query($con, $q);
 if($save){

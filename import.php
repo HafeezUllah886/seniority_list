@@ -69,8 +69,7 @@
                     $rem = $row[14];
 
                     $dob1 = date("Y-m-d", strtotime($dob));
-                    echo "<br>".$dob . "<br>";
-                    echo "<br>".$dob1 . "<br>";
+                   
                       $doa1 = date("Y-m-d", strtotime($doa));
                       $dor1 = date("Y-m-d", strtotime($dor));
                     $check = mysqli_query($con, "SELECT * FROM list WHERE cnic = '$cnic'");
@@ -81,7 +80,7 @@
                     // else{
                         $q = "insert into list values
                                 (null, '$name', '$fname', '$cnic', '$dob1', '$pno', 
-                                '$desg', '$dist', '$aq', '$pq', '$doa1', '$dor1', '$rem', '1', '1', '1', '1')";
+                                '$desg', '$dist', '$aq', '$pq', '$doa1', '$dor1', '$rem', '1', '1', '1', '1', 0)";
                                 $save = mysqli_query($con, $q);
                                 if ($save)
                                 {

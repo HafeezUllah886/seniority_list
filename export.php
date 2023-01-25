@@ -3,6 +3,7 @@
 require 'vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use \PhpOffice\PhpSpreadsheet\Writer\IWriter;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 $spreadsheet = new Spreadsheet();
@@ -21,7 +22,8 @@ $sheet->setCellValue('J2', 'Professional Qualification');
 $sheet->setCellValue('K2', 'Date of Appointment');
 $sheet->setCellValue('L2', 'Date of Retirement');
 $sheet->setCellValue('M2', 'Remaining Service');
-$sheet->setCellValue('N2', 'Remarks');
+$sheet->setCellValue('N2', 'File Number');
+$sheet->setCellValue('O2', 'Remarks');
 include('connect.php');
                     $get = mysqli_query($con, "Select * from list ORDER BY doa, birth ASC");
                     $ser = 0;
@@ -52,12 +54,14 @@ include('connect.php');
                         $sheet->setCellValue('K'.$ser+2, $doa1);
                         $sheet->setCellValue('L'.$ser+2, $dor1);
                         $sheet->setCellValue('M'.$ser+2, $years .'Y '. $months . 'M '. $days . 'D');
-                        $sheet->setCellValue('N'.$ser+2, $row['rem']);
+                        $sheet->setCellValue('N'.$ser+2, $row['filenum']);
+                        $sheet->setCellValue('O'.$ser+2, $row['rem']);
 
                     }
                     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
                     header('Content-Disposition: attachment;filename=data.xlsx');
-                    $sheet->mergeCells('A1:N1');
+                    $sheet->mergeCells('A1:O1');
+                    $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
                     $writer->save('php://output');
                     
 ?>

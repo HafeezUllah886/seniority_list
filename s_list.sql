@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2023 at 04:37 PM
+-- Generation Time: Jan 25, 2023 at 08:55 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -44,7 +44,8 @@ CREATE TABLE `list` (
   `app` varchar(50) NOT NULL,
   `degree` varchar(50) NOT NULL,
   `acr` varchar(50) NOT NULL,
-  `asset` varchar(50) NOT NULL
+  `asset` varchar(50) NOT NULL,
+  `filenum` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -65,7 +66,7 @@ ALTER TABLE `list`
 -- AUTO_INCREMENT for table `list`
 --
 ALTER TABLE `list`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

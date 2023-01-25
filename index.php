@@ -20,6 +20,7 @@
             <table id="table">
                 <thead>
                     <th>Ser</th>
+                    <th>File</th>
                     <th>Name</th>
                     <th>F/Name</th>
                     <th>CNIC</th>
@@ -58,6 +59,7 @@ $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24))
                       ?>
                       <tr>
                         <td><?php echo $ser; ?></td>
+                        <td><?php echo $row['filenum']; ?></td>
                         <td><?php echo $row['name']; ?></td>
                         <td><?php echo $row['fname']; ?></td>
                         <td><?php echo $row['cnic']; ?></td>
@@ -133,6 +135,7 @@ $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24))
                         <td>
                           <a href="update_files.php?id=<?php echo $row['id'];?>">Update Attachment</a>
                           <a href="delete.php?id=<?php echo $row['id'];?>" class="text-danger">Delete</a>
+                          <a href="edit.php?id=<?php echo $row['id'];?>" class="text-info">Edit</a>
                         </td>
                       </tr>
                       <?php
